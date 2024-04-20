@@ -1,4 +1,4 @@
-Cookiecutter-MLOps
+Energy Demand Prediction Model
 ==============================
 
 A cookiecutter template employing MLOps best practices, so you can focus on building machine learning products while
