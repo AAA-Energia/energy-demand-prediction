@@ -87,3 +87,6 @@ coverage.xml
 
 # Mypy cache
 .mypy_cache/
+
+#firebase
+energy-demand-prediction_key.json

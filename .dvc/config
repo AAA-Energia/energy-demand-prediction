@@ -1,2 +1,4 @@
-['remote "origin"']
-    url = https://dagshub.com/DagsHub/Cookiecutter-MLOps.dvc
+[core]
+    remote = storage
+['remote "storage"']
+    url = gs://energy-demand-prediction-1da88.appspot.com
