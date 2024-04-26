@@ -90,3 +90,6 @@ coverage.xml
 
 #firebase
 energy-demand-prediction_key.json
+
+#Carpetas de logs
+logs
