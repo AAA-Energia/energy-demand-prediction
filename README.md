@@ -36,6 +36,7 @@
   Siguiendo lo establecido en el Manual, nuestro modelo deberá igualmente utilizar esta métrica para evaluar su desempeño. Idealmente, se busca un valor del MAPE menor al 5%.
 
 - **¿Como están alineadas las métricas de la calidad del modelo con las métricas de impacto de la solución?**
+  
   Con un MAPE menor, obtenemos una mejor aproximación para la demanda energética. Ante esto, al tener una mejor predicción de la energía utilizar, el ahorro neto, la tasa de utilización y los cortes evitados aumentan.
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
