@@ -93,3 +93,5 @@ energy-demand-prediction_key.json
 
 #Carpetas de logs
 logs
+
+.virtual_documents

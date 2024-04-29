@@ -1,75 +1,33 @@
-Energy Demand Prediction Model
-==============================
+# Energy Demand Prediction Model
 
-A cookiecutter template employing MLOps best practices, so you can focus on building machine learning products while
-having MLOps best practices applied.
+- **¿Que problema se plantea resolver?**  
+  En este proyecto, se pretende generar un modelo de aprendizaje automático que permita predecir la demanda de energía en la región noroeste de México.
 
-Instructions
-------------
-1. Clone the repo.
-2. Run `make dirs` to create the missing parts of the directory structure described below.
-3. *Optional:* Run `make virtualenv` to create a python virtual environment. Skip if using conda or some other env manager.
-    1. Run `source env/bin/activate` to activate the virtualenv.
-4. Run `make requirements` to install required python packages.
-5. Put the raw data in `data/raw`.
-6. To save the raw data to the DVC cache, run `dvc add data/raw`
-7. Edit the code files to your heart's desire.
-8. Process your data, train and evaluate your model using `dvc repro` or `make reproduce`
-9. To run the pre-commit hooks, run `make pre-commit-install`
-10. For setting up data validation tests, run `make setup-setup-data-validation`
-11. For **running** the data validation tests, run `make run-data-validation`
-12. When you're happy with the result, commit files (including .dvc files) to git.
+- **¿Porqué es un problema importante para la institución/organización/empresa?**  
+  Una de las tareas principales del Centro Nacional de Control de Energía (CENACE) es la predicción de la demanda de energía eléctrica en el Sistema Eléctrino Nacional, por lo que un modelo de este tipo podría ser una herramienta clave para realizar esta tarea.
+- **¿Cuales son las métricas para medir el impacto de la solución una vez obtenida?**
 
-Project Organization
-------------
+- **¿Que problema de aprendizaje implica resolver?**  
+  En este caso, nuestro problema se trata de un problema de regresión, ya que nuestra variable de respuesta corresponde a la demanda de energía de la zona del noroeste, la cual es un valor continuo positivo.  
+  Nuestros datos de entrada son además series de tiempo, ya que se trata de diversas variables meteorológicas y de demanda de energía entre los años 2017 y 2022.
+- **¿Qué metricas permiten medir la calidad del modelo de aprendizaje? ¿Cuales son sus valores deseables?**  
+  En el caso de la predicción de la demanda de energía, el [Manual de Pronósticos](https://www.diputados.gob.mx/LeyesBiblio/regla/n533.pdf) que rige las métricas a utilizar por el CENACE, establece que se utilizará la métrica MAPE para medir el grado de certeza con que realiza sus
+  pronósticos de demanda.  
+  La fórmula del MAPE, o Mean Absolute Percentage Error, es la siguiente:  
+  $$\textup{MAPE} = \frac{1}{h}\sum_{t=1}^{h}\left |  \frac{DR_t - DP_t}{DR_t} \right | * 100$$  
+  Donde:
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make dirs` or `make clean`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │   └── metrics.txt    <- Relevant metrics after evaluating the model.
-    │   └── training_metrics.txt    <- Relevant metrics from training the model.
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   ├── great_expectations  <- Folder containing data integrity check files
-    │   │   ├── make_dataset.py
-    │   │   └── data_validation.py  <- Script to run data integrity checks
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    ├── .pre-commit-config.yaml  <- pre-commit hooks file with selected hooks for the projects.
-    ├── dvc.lock           <- constructs the ML pipeline with defined stages.
-    └── dvc.yaml           <- Traing a model on the processed data.
+  - $h$ = Número de horas a evaluar
+  - $DR_t$ = Demanda integrada real de la hora $t$
+  - $DP_t$ = Demanda integrada pronosticada de la hora $t$
 
+  Siguiendo lo establecido en el Manual, nuestro modelo deberá igualmente utilizar esta métrica para evaluar su desempeño. Idealmente, se busca un valor del MAPE menor al 5%.
 
---------
+- **¿Como están alineadas las métricas de la calidad del modelo con las métricas de impacto de la solución?**
+
+---
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
-
 
 ---
 
