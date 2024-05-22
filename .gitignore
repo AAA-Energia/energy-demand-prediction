@@ -95,3 +95,4 @@ energy-demand-prediction_key.json
 logs
 
 .virtual_documents
+.env
