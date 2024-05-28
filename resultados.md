@@ -1,3 +1,5 @@
+# Predicción de Consumo Energético Empleando Varios Métodos de Aprendizaje Automático.
+
 ## Introduccción
 
 Se ha considerado la prevención del consuma de energía como el tema clave para la planeación de red eléctricas inteligentes, en el mercado de electricidad y sustentabilidad de potencia eléctrica [1].  
@@ -13,6 +15,12 @@ En este trabajo se empleó el uso de medidas de reducción de dimensionalidad de
 En el caso de la predicción de la demanda de energía, el Manual de Pronósticos que rige las métricas a utilizar por el CENACE, establece que se utilizará la métrica MAPE para medir el grado de certeza con que realiza sus pronósticos de demanda.
 
 Siguiendo lo establecido en el Manual, nuestro modelo deberá igualmente utilizar esta métrica para evaluar su desempeño. Idealmente, se busca un valor del MAPE menor al 5%.
+
+## Trabajos Similiares 
+Algunos otros autores se presentan diferentes resultados; Sameh Mahjoub [1] proyecta diversos métodos para predecir el consumo eléctrico de la ciudad de Peroné Francia, como los son Long Short-Term Memory (LSTM), Unidades Recurrentes Cerradas (GRU),  y Drop-GRU.  Este pudo tener un MAPE de alrededor de 10%.
+
+
+
 
 ## Datos
 Los datos empleados para crear dicho modelo son proporcionados por el Sistema Eléctrico Nacional (SEN), contienen el consumo eléctrico y las temperaturas máximas y mínimas del día en la zona norponiente del país de las siguientes localidades: Caborca, Ciudad Obregón, Hermosillo, en el estado de Sonora, y los Mochis y Culiacán del estado de Sinaloa. También estas cuentan con datos de actividades antropomórficas que se realizan en la zona estudiada, como lo es días feriados, los cuales, afectan directamente al consumo eléctrico debido a que en estos días se reduce significativamente la actividad laboral.
@@ -45,6 +53,7 @@ El algoritmo de Gradient Boosting se empleó para construir un modelo de predicc
 En este caso se utilizó Grid Search para seleccionar los hiperparametros. Dando un MAPE de 0.96% de error.
 
 ![alt text](reports\reporte_resultados\output_gradient_boosting.png "Title")
+*Imagen 04. Resultados de Gradient Boosting vs los datos reales de predicción de consumo.*
 
 ## REGRESION LINEAR
 La regresión lineal se utilizó para desarrollar un modelo de predicción de consumo energético al establecer una relación lineal entre las variables predictoras, como la temperatura, la hora del día y el día de la semana, y la variable objetivo, que es el consumo energético.
@@ -52,6 +61,7 @@ Después de entrenar el modelo, se evaluó su rendimiento utilizando el conjunto
 Como conclusión, en esta libreta pudimos apreciar que en nuestro caso, incluso un modelo tan "sencillo" como la regresión lineal permite ajustar y predecir muy bien nuestra variable objetivo. En este caso, podemos ver en los registros de mlflow que el coeficiente $R^2$ de nuestro modelo alcanza un valor de $0.99$. Además de esto, nuestra métrica objetivo (MAPE) alcanza un valor de apenas 2%, lo cual indica un buen desempeño del modelo.
 
 ![alt text](reports\reporte_resultados\output_Regr_Linear.png "Title")
+*Imagen 04. Resultados del modelo de Regresion Lineal vs los datos reales de predicción de consumo.*
 
 ## MAQUINA DE VECTORES DE SOPORTE
 El algoritmo de Máquinas de Vectores de Soporte (SVM, por sus siglas en inglés) se aplicó para desarrollar un modelo de predicción de consumo energético aprovechando su capacidad para encontrar el hiperplano óptimo que mejor separa los datos en clases distintas.
@@ -59,17 +69,35 @@ Para este problema, se utilizó selecciona miento de hiperparametros usando Rand
 En este caso nos dio un MAPE de alrededor de 2%.
 
 ![alt text](reports\reporte_resultados\Prediction_SVR.png "Title")
+*Imagen 05. Comparativa entre resiultados del modelo de SVM (naranja), y el consumo energetico real (en azul) del conjunto de entrenamiento*
 
 ![alt text](reports\reporte_resultados\output_SVR.png "Title")
+*Imagen 06. Comparativa entre resiultados del modelo de SVM y el consumo energetico real del conjunto de entrenamiento*
 
 ## LSTM
 Para construir un modelo de predicción de consumo energético utilizando redes neuronales LSTM (Long Short-Term Memory), se recopilaron datos históricos de consumo energético, incluyendo factores temporales como la hora del día, el día de la semana y factores ambientales como la temperatura. Estos datos se organizaron en secuencias temporales y se dividieron en conjuntos de entrenamiento y prueba. Las redes LSTM fueron utilizadas debido a su capacidad para capturar dependencias temporales a largo plazo en los datos.
 
+El LSTM no dio un buen resultado proyectando un MAPE de 10%. Se le atribuyen los malos resultados al uso de una red demasiado simple para modelar el comportamiento del consumo energético a lo largo del año.
+
+![alt text](reports\reporte_resultados\output_lstm.png "Title")
+
+*Imagen 07. Comparacion de Perdida de Datos de Entrenamiento y los Datos de validacion*
+
 ## CONCLUSIONES
+En conclusión, tras evaluar diversos modelos para predecir el consumo energético, se determinó que el mejor rendimiento se logró con el método de Gradient Boosting con un MAPE de 0.96% probo ser el mejor modelo, segudio de Random Forest on un MAPE de 0.99%. Este enfoque demostró una capacidad excepcional para capturar las complejas relaciones entre las variables predictoras y la variable objetivo, superando a otros algoritmos en términos de precisión y generalización. La elección de Gradient Boosting de varios modelos como el más eficaz resalta su versatilidad y robustez en la predicción del consumo energético, ofreciendo una sólida base para futuros análisis y decisiones en materia de gestión y planificación energética.
+
+Esta serie de modelos, en comparación con otros trabajos que intentan prever el consumo energético utilizando una variedad de métodos, ha arrojado resultados superiores. La aplicación de estos modelos ha demostrado una mejora significativa en la precisión y fiabilidad de las predicciones, destacándose por su capacidad para capturar las complejas interacciones entre las variables predictoras y el consumo energético. Este rendimiento mejorado subraya la seleccion de hiperparametros y la amplia comprension de varios metodos vistos en la materia de Aprendizaje Automatico.
+
+Los modelos desarrollados han demostrado ser altamente satisfactorios, ya que el Error Porcentual Absoluto Medio (MAPE) se mantiene consistentemente por debajo del 5%. El hecho de que el MAPE se mantenga tan bajo indica que los modelos son capaces de predecir el consumo energético con una precisión excepcional. Este nivel de exactitud es crucial para garantizar una planificación y gestión efectivas de los recursos energéticos, lo que sugiere que los modelos son una herramienta confiable y eficaz para abordar los desafíos relacionados con el consumo de energía en diversos contextos.
+
 
 ## Bibliografía
-[1] Sameh Mahjoub, LabriChririfi-Alaoui, Predicting Energy Consumption Using LSTM, MultiLayer GRU and Drop-GRU Neural Network, 
+[1] Sameh Mahjoub, LabriChririfi-Alaoui, Predicting Energy Consumption Using LSTM, MultiLayer GRU and Drop-GRU Neural Network.
+
 [2] Arturo Morales Acevedo, Forcasting Future energy demand: Electrical Energy in Mexico as example case; ISES Solar World Congress 2013.
+
 [3] Informe de Labores 2022 - 2023, 1 de septiembre 2023. Secretaria de Energía.
+
 [4] Demanda y consumo 2021 -2035. PRODECEN.
+
 [5] Bibiana Lanzilotta, Silvia Rodriguez Collazo, Modelos de predccion de demanda de energía eléctrica con datos horarios para Uruguay, 2016,Cuadernos de CIMBAGE No 18 1-28.
