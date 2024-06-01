@@ -30,7 +30,7 @@ Para reducir el número de componentes de temperatura en la región del noroeste
 
 Podemos visualizar que los primeros dos componentes pueden explicar más del 70% de la varianza, y los 10 componentes principales de los datos de clima pueden explicar alrededor del 98% de la varianza.
 
-![alt text]("reports\reporte_resultados\PCA.png" "Title")
+![alt text](reports/reporte_resultados/PCA.png)
 *Imagen 01. Componentes principales contra el acumulado de varianza explicada. Se puede apreciar que los principales 10 componentes explican el alrededor de 90% de la varianza.*
 
 
