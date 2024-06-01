@@ -38,21 +38,21 @@ Podemos visualizar que los primeros dos componentes pueden explicar más del 70%
 K-means es un algoritmo de aprendizaje no supervisado utilizado para agrupar datos en conjuntos o clústeres basados en similitudes. Para usar K-means, primero se elige el número de clústeres (K) que se desea identificar en los datos. Luego, el algoritmo asigna aleatoriamente puntos iniciales como centroides para cada clúster.
 En este diagrama, podemos apreciar que nuestros datos podrían ser separados en al menos 5 clústeres, aunque también podemos apreciar una posible confusión entre estos (en este caso, entre el clúster `cyan` y `azul`).
 
-![alt text](reports\reporte_resultados\clustering_datos.png "Title")
+![alt text](reports/reporte_resultados/clustering_datos.png)
 *Imagen 02. K-means divide los datos e 5 categorías.*
 
 ## RANDOM FOREST
 El algoritmo Random Forest se utilizó para construir un modelo de predicción de consumo energético al aprovechar su capacidad para manejar conjuntos de datos complejos y no lineales. Primero, se recopilaron datos históricos de consumo energético, incluidos factores como la hora del día, la temperatura, la temporada y eventos especiales. Luego, se dividió el conjunto de datos en un conjunto de entrenamiento y otro de prueba.
 En este caso se realizo la selección de hiperparametros con Optuna. Optuna es una biblioteca de optimización de hiperparámetros de código abierto para Python. Su objetivo principal es automatizar el proceso de ajuste de hiperparámetros de algoritmos de machine learning de manera eficiente y fácil de usar. Dando un MAPE de 0.99% de error.
 
-![alt text](reports\reporte_resultados\output_random_forest.png "Title")
+![alt text](reports/reporte_resultados/output_random_forest.png)
 *Imagen 03. Resultados de Random Forest vs los datos reales de predicción de consumo.*
 
 ## GRADIENT-BOOSTING
 El algoritmo de Gradient Boosting se empleó para construir un modelo de predicción de consumo energético aprovechando su capacidad para generar un conjunto de modelos débiles, como árboles de decisión, que se combinan secuencialmente para mejorar la precisión predictiva. Primero, se recopilaron datos históricos de consumo energético junto con variables relacionadas, como la temperatura, la hora del día y eventos especiales.
 En este caso se utilizó Grid Search para seleccionar los hiperparametros. Dando un MAPE de 0.96% de error.
 
-![alt text](reports\reporte_resultados\output_gradient_boosting.png "Title")
+![alt text](reports/reporte_resultados/output_gradient_boosting.png)
 *Imagen 04. Resultados de Gradient Boosting vs los datos reales de predicción de consumo.*
 
 ## REGRESION LINEAR
@@ -60,7 +60,7 @@ La regresión lineal se utilizó para desarrollar un modelo de predicción de co
 Después de entrenar el modelo, se evaluó su rendimiento utilizando el conjunto de prueba para verificar su capacidad para generalizar y predecir con precisión el consumo energético en datos no vistos.
 Como conclusión, en esta libreta pudimos apreciar que en nuestro caso, incluso un modelo tan "sencillo" como la regresión lineal permite ajustar y predecir muy bien nuestra variable objetivo. En este caso, podemos ver en los registros de mlflow que el coeficiente $R^2$ de nuestro modelo alcanza un valor de $0.99$. Además de esto, nuestra métrica objetivo (MAPE) alcanza un valor de apenas 2%, lo cual indica un buen desempeño del modelo.
 
-![alt text](reports\reporte_resultados\output_Regr_Linear.png "Title")
+![alt text](reports/reporte_resultados/output_Regr_Linear.png)
 *Imagen 04. Resultados del modelo de Regresion Lineal vs los datos reales de predicción de consumo.*
 
 ## MAQUINA DE VECTORES DE SOPORTE
@@ -68,10 +68,10 @@ El algoritmo de Máquinas de Vectores de Soporte (SVM, por sus siglas en inglés
 Para este problema, se utilizó selecciona miento de hiperparametros usando Random Search y Grid Search para encontrar la configuración de hiperparametros.
 En este caso nos dio un MAPE de alrededor de 2%.
 
-![alt text](reports\reporte_resultados\Prediction_SVR.png "Title")
+![alt text](reports/reporte_resultados/Prediction_SVR.png)
 *Imagen 05. Comparativa entre resiultados del modelo de SVM (naranja), y el consumo energetico real (en azul) del conjunto de entrenamiento*
 
-![alt text](reports\reporte_resultados\output_SVR.png "Title")
+![alt text](reports/reporte_resultados/output_SVR.png)
 *Imagen 06. Comparativa entre resiultados del modelo de SVM y el consumo energetico real del conjunto de entrenamiento*
 
 ## LSTM
@@ -79,7 +79,7 @@ Para construir un modelo de predicción de consumo energético utilizando redes 
 
 El LSTM no dio un buen resultado proyectando un MAPE de 10%. Se le atribuyen los malos resultados al uso de una red demasiado simple para modelar el comportamiento del consumo energético a lo largo del año.
 
-![alt text](reports\reporte_resultados\output_lstm.png "Title")
+![alt text](reports/reporte_resultados/output_lstm.png)
 
 *Imagen 07. Comparacion de Perdida de Datos de Entrenamiento y los Datos de validacion*
 
